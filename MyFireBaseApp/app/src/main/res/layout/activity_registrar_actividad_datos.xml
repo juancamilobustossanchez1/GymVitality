@@ -19,35 +19,97 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:text="Detalles Actividades"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:text="Hola"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/inicioSaludo"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imagenInformacionActividad"
+            android:layout_gravity="center"
+            android:src="@drawable/pesas"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:text="Recuerda que te vas a inscribir a: "
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/text1"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre persona a inscribir:">
-
-            <EditText
-                android:id="@+id/txt_nombrePersonaIncribir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp"
-                android:enabled="false"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre La actividad a iniscribir">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/txt_nombreActividadInscribir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="false"
                 android:inputType="textPersonName"
-                android:paddingTop="15dp"
+                android:paddingTop="12dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:text="EL dia de la actividad es: "
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/text2"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DD/MM/AAA">
+
+            <EditText
+                android:id="@+id/txt_fecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:paddingTop="12dp"
+                android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:text="La hora de la actividad sera: "
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/text3"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora de Inicio - Hora fin">
+
+            <EditText
+                android:id="@+id/txt_horaInicioActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="12dp"
                 android:enabled="false"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>

@@ -1,12 +1,16 @@
 package firebase.app.prueba;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,7 +27,7 @@ import java.util.List;
 import firebase.app.prueba.model.Actividad;
 import firebase.app.prueba.model.ActividadInscripciones;
 
-public class InformacionActividad extends AppCompatActivity {
+public class InformacionActividad extends AppCompatActivity implements View.OnClickListener {
 
     private List<Actividad> listActividades = new ArrayList<Actividad>();
     ArrayAdapter<Actividad> arrayAdapterActividades;
@@ -34,10 +38,12 @@ public class InformacionActividad extends AppCompatActivity {
     EditText horaInicioActividad;
     EditText horaFinActividad;
 
-
+    ActividadesInscritasCliente actividadesInscritasClienteSeleccionada;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+    Button btnELiminarbtnELiminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,8 @@ public class InformacionActividad extends AppCompatActivity {
         setContentView(R.layout.activity_informacion_actividad);
 
 
+        btnELiminarbtnELiminar = findViewById(R.id.btnEliminarActividad);
+        btnELiminarbtnELiminar.setOnClickListener(this);
 
         nombreActividad = findViewById(R.id.txt_actividadNombre);
         entrenadorEncargado = findViewById(R.id.txt_nombreEntrenadorEncargado);
@@ -117,5 +125,36 @@ public class InformacionActividad extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+        final CharSequence[] opciones = {"Confirmar", "Cancelar"};
+        final AlertDialog.Builder alertaOpciones = new AlertDialog.Builder(InformacionActividad.this);
+        alertaOpciones.setTitle("¿Realmente desea salir de la actividad?");
+        alertaOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if (opciones[i].equals("Confirmar")) {
+                    metodoEliminar();
+                    Intent siguiente = new Intent(InformacionActividad.this, ActividadesInscritasCliente.class);
+                    startActivity(siguiente);
+                }
+            }
+        });
+        alertaOpciones.show();
+
+
+    }
+    public void metodoEliminar(){
+        ActividadInscripciones actividadInscripciones = new ActividadInscripciones();
+        actividadInscripciones.setUid(ActividadesInscritasCliente.actividadSeleccionada.getUid());
+        databaseReference.child("ActividadInscripciones").child(actividadInscripciones.getUid()).removeValue();
+        Toast.makeText(this, "Saliste de la activividad", Toast.LENGTH_LONG).show();
+
+        Intent siguiente = new Intent(InformacionActividad.this, Main2Activity.class);
+        startActivity(siguiente);
     }
 }

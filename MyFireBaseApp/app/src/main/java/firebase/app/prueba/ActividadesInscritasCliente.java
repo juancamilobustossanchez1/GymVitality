@@ -29,6 +29,10 @@ import firebase.app.prueba.model.ActividadInscripciones;
 
 public class ActividadesInscritasCliente extends AppCompatActivity {
 
+
+
+
+
     private List<ActividadInscripciones> listPerson = new ArrayList<ActividadInscripciones>();
     ArrayAdapter<ActividadInscripciones> arrayAdapterPersona;
 
@@ -52,6 +56,7 @@ public class ActividadesInscritasCliente extends AppCompatActivity {
 
         inicializarFirebase();
         listarDatos();
+        actividadProxima();
 
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,6 +69,12 @@ public class ActividadesInscritasCliente extends AppCompatActivity {
 
     }
 
+    private void actividadProxima() {
+
+
+
+    }
+
     private void inicializarFirebase() {
 
         FirebaseApp.initializeApp(this);
@@ -72,26 +83,27 @@ public class ActividadesInscritasCliente extends AppCompatActivity {
     }
 
     private void listarDatos() {
-          databaseReference.child("ActividadInscripciones").addValueEventListener(new ValueEventListener() {
-                      @Override
-                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                          listPerson.clear();
-                          for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
-                              ActividadInscripciones actividadInscripciones = objSnaptshot.getValue(ActividadInscripciones.class);
+        databaseReference.child("ActividadInscripciones").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listPerson.clear();
+                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    ActividadInscripciones actividadInscripciones = objSnaptshot.getValue(ActividadInscripciones.class);
 
-                              if (actividadInscripciones.getNombreUsuario().equals(nomP.getText().toString())){
-                                  listPerson.add(actividadInscripciones);
-                                  arrayAdapterPersona = new ArrayAdapter<ActividadInscripciones>(ActividadesInscritasCliente.this, android.R.layout.simple_list_item_1, listPerson);
-                                  listV_personas.setAdapter(arrayAdapterPersona);
-                              }
-                          }
-                      }
+                    if (actividadInscripciones.getNombreUsuario().equals(nomP.getText().toString())){
+                        listPerson.add(actividadInscripciones);
+                        arrayAdapterPersona = new ArrayAdapter<ActividadInscripciones>(ActividadesInscritasCliente.this, android.R.layout.simple_list_item_1, listPerson);
+                        listV_personas.setAdapter(arrayAdapterPersona);
 
-                      @Override
-                      public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                }
+            }
 
-                      }
-                  });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
@@ -117,3 +129,4 @@ public class ActividadesInscritasCliente extends AppCompatActivity {
         return true;
     }
 }
+

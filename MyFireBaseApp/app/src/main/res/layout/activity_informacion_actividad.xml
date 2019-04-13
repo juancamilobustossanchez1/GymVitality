@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".InformacionActividad">
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +16,8 @@
         android:layout_margin="10dp"
         android:text="Información actividad"
         android:textSize="30dp" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:paddingTop="10dp"/>
+                android:paddingTop="10dp"
+                android:enabled="false"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -45,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:paddingTop="10dp"/>
+                android:paddingTop="10dp"
+                android:enabled="false"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -59,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="date"
-                android:paddingTop="10dp"/>
+                android:paddingTop="10dp"
+                android:enabled="false"/>
         </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -73,7 +80,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:paddingTop="15dp" />
+                        android:paddingTop="15dp"
+                        android:enabled="false"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -87,9 +95,15 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:paddingTop="15dp" />
+                        android:paddingTop="15dp"
+                        android:enabled="false"/>
                 </android.support.design.widget.TextInputLayout>
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEliminarActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Asistiré a la actividad" />
 
 </LinearLayout>

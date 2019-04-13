@@ -12,6 +12,7 @@ public class Actividad {
     public Actividad() {
     }
 
+
     public String getUid() {
         return uid;
     }
